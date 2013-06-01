@@ -68,7 +68,6 @@
   "Encoding mapping for platex."
   :group 'auctex-latexmk)
 
-;;;###autoload
 (defun TeX-run-latexmk (name command file)
   (let ((TeX-sentinel-default-function 'Latexmk-sentinel)
         (pair (assq buffer-file-coding-system auctex-latexmk:encoding-alist)))
