@@ -3,6 +3,8 @@
 ;; Copyright (C) 2013 by Tomoya Tanjo
 
 ;; Author: Tomoya Tanjo <ttanjo@gmail.com>
+;; URL: https://github.com/tom-tan/auctex-latexmk/
+;; Package-Requires: ((auctex "11.86"))
 ;; Keywords: tex
 
 ;; This program is free software; you can redistribute it and/or modify
