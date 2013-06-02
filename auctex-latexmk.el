@@ -56,7 +56,7 @@
 (require 'tex-buf)
 (require 'latex)
 
-(defcustom auctex-latexmk:encoding-alist
+(defcustom auctex-latexmk-encoding-alist
   '((japanese-iso-8bit      . "euc")
     (japanese-iso-8bit-unix . "euc")
     (euc-jp                 . "euc")
@@ -70,7 +70,7 @@
 
 (defun TeX-run-latexmk (name command file)
   (let ((TeX-sentinel-default-function 'Latexmk-sentinel)
-        (pair (assq buffer-file-coding-system auctex-latexmk:encoding-alist)))
+        (pair (assq buffer-file-coding-system auctex-latexmk-encoding-alist)))
     (unless (null pair)
       (setenv "LATEXENC" (cdr pair)))
     (TeX-run-TeX name command file)
