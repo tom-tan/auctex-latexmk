@@ -31,6 +31,7 @@
 ;;
 ;; To use this package, add the following line to your .emacs file:
 ;;     (require 'auctex-latexmk)
+;;     (auctex-latexmk-setup)
 ;; And add the following line to your .latexmkrc file:
 ;;     # .latexmkrc starts
 ;;     $latex  = "platex -interaction=nonstopmode";
@@ -77,14 +78,16 @@
     (setenv "LATEXENC" nil)))
 
 ;;;###autoload
-(setq-default TeX-command-list
-              (cons
-               '("LatexMk" "latexmk -pdfdvi %t" TeX-run-latexmk nil
-                 (plain-tex-mode latex-mode doctex-mode) :help "Run LatexMk")
-               TeX-command-list)
-              LaTeX-clean-intermediate-suffixes
-              (append LaTeX-clean-intermediate-suffixes
-                      '("\\.fdb_latexmk" "\\.aux.bak")))
+(defun auctex-latexmk-setup ()
+  "Add LatexMk command to TeX-command-list."
+  (setq-default TeX-command-list
+                (cons
+                 '("LatexMk" "latexmk -pdfdvi %t" TeX-run-latexmk nil
+                   (plain-tex-mode latex-mode doctex-mode) :help "Run LatexMk")
+                 TeX-command-list)
+                LaTeX-clean-intermediate-suffixes
+                (append LaTeX-clean-intermediate-suffixes
+                        '("\\.fdb_latexmk" "\\.aux.bak"))))
 
 (defun Latexmk-sentinel (process name)
   (save-excursion

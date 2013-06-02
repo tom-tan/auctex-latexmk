@@ -10,6 +10,7 @@ Requirements:
 To use this package, add the following line to your .emacs file:
 ```elisp
     (require 'auctex-latexmk)
+    (auctex-latexmk-setup)
 ```
 And add the following line to your .latexmkrc file:
 ```perl
