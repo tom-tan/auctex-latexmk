@@ -42,7 +42,7 @@
 ;; For Japanese users:
 ;;
 ;; LatexMk command automatically stores the encoding of a source file
-;; and passes it to latexmk via a environment variable named "LATEXENC".
+;; and passes it to latexmk via an environment variable named "LATEXENC".
 ;; Here is the example of .latexmkrc to use "LATEXENC":
 ;;     # .latexmkrc starts
 ;;     $kanji  = "-kanji=$ENV{\"LATEXENC\"}" if defined $ENV{"LATEXENC"};
