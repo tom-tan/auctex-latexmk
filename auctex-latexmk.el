@@ -95,7 +95,7 @@
                                    (or auctex-latexmk-options ""))))
   (setq-default TeX-command-list
                 (cons
-                 `("LatexMk" "latexmk %(latexmkopt) %t" TeX-run-latexmk nil
+                 '("LatexMk" "latexmk %(latexmkopt) %t" TeX-run-latexmk nil
                    (plain-tex-mode latex-mode doctex-mode) :help "Run LatexMk")
                  TeX-command-list)
                 LaTeX-clean-intermediate-suffixes
