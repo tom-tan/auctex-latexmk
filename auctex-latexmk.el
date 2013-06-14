@@ -39,7 +39,6 @@
 ;;     # .latexmkrc ends
 ;; After that, by using M-x TeX-command-master (or C-c C-c), you can use
 ;; LatexMk command to compile TeX source.
-;; You can customize options for LatexMk via auctex-latexmk-options.
 ;;
 ;; For Japanese users:
 ;;
@@ -47,10 +46,11 @@
 ;; and passes it to latexmk via an environment variable named "LATEXENC".
 ;; Here is the example of .latexmkrc to use "LATEXENC":
 ;;     # .latexmkrc starts
-;;     $kanji  = "-kanji=$ENV{\"LATEXENC\"}" if defined $ENV{"LATEXENC"};
-;;     $latex  = "platex -interaction=nonstopmode $kanji";
-;;     $bibtex = 'pbibtex $kanji';
-;;     $dvipdf = 'perl -e "exec(\'dvipdfmx\', \$ARGV[0])"';
+;;     $kanji    = "-kanji=$ENV{\"LATEXENC\"}" if defined $ENV{"LATEXENC"};
+;;     $latex    = "platex -interaction=nonstopmode $kanji";
+;;     $bibtex   = 'pbibtex $kanji';
+;;     $dvipdf   = 'perl -e "exec(\'dvipdfmx\', \$ARGV[0])"';
+;;     $pdf_mode = 3;
 ;;     # .latexmkrc ends
 
 ;;; Code:
@@ -75,10 +75,6 @@
   "Encoding mapping for platex."
   :group 'auctex-latexmk)
 
-(defcustom auctex-latexmk-options "-pdfdvi"
-  "Options for LatexMk."
-  :group 'auctex-latexmk)
-
 (defun TeX-run-latexmk (name command file)
   (let ((TeX-sentinel-default-function 'Latexmk-sentinel)
         (pair (assq buffer-file-coding-system auctex-latexmk-encoding-alist)))
@@ -90,12 +86,9 @@
 ;;;###autoload
 (defun auctex-latexmk-setup ()
   "Add LatexMk command to TeX-command-list."
-  (add-to-list 'TeX-expand-list
-               '("%(latexmkopt)" (lambda ()
-                                   (or auctex-latexmk-options ""))))
   (setq-default TeX-command-list
                 (cons
-                 '("LatexMk" "latexmk %(latexmkopt) %t" TeX-run-latexmk nil
+                 '("LatexMk" "latexmk %t" TeX-run-latexmk nil
                    (plain-tex-mode latex-mode doctex-mode) :help "Run LatexMk")
                  TeX-command-list)
                 LaTeX-clean-intermediate-suffixes

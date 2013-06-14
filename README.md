@@ -21,7 +21,6 @@ And add the following line to your `.latexmkrc` file:
 ```
 After that, by using `M-x TeX-command-master` (or C-c C-c), you can use
 LatexMk command to compile TeX source.
-You can customize options for LatexMk via `auctex-latexmk-options`.
 
 For Japanese users:
 
@@ -30,9 +29,10 @@ and passes it to latexmk via a environment variable named `LATEXENC`.
 Here is the example of `.latexmkrc` to use `LATEXENC`:
 ```perl
     # .latexmkrc starts
-    $kanji  = "-kanji=$ENV{\"LATEXENC\"}" if defined $ENV{"LATEXENC"};
-    $latex  = "platex -interaction=nonstopmode $kanji";
-    $bibtex = 'pbibtex $kanji';
-    $dvipdf = 'perl -e "exec(\'dvipdfmx\', \$ARGV[0])"';
+    $kanji    = "-kanji=$ENV{\"LATEXENC\"}" if defined $ENV{"LATEXENC"};
+    $latex    = "platex -interaction=nonstopmode $kanji";
+    $bibtex   = 'pbibtex $kanji';
+    $dvipdf   = 'perl -e "exec(\'dvipdfmx\', \$ARGV[0])"';
+    $pdf_mode = 3;
     # .latexmkrc ends
 ```
