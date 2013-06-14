@@ -57,6 +57,11 @@
 (require 'tex-buf)
 (require 'latex)
 
+(defgroup auctex-latexmk nil
+  "Add LatexMk support to AUCTeX."
+  :group 'AUCTeX
+  :prefix "auctex-latexmk")
+
 (defcustom auctex-latexmk-encoding-alist
   '((japanese-iso-8bit      . "euc")
     (japanese-iso-8bit-unix . "euc")
