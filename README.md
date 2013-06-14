@@ -21,6 +21,7 @@ And add the following line to your `.latexmkrc` file:
 ```
 After that, by using `M-x TeX-command-master` (or C-c C-c), you can use
 LatexMk command to compile TeX source.
+You can customize options for LatexMk via `auctex-latexmk-options`.
 
 For Japanese users:
 

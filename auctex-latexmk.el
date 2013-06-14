@@ -39,6 +39,7 @@
 ;;     # .latexmkrc ends
 ;; After that, by using M-x TeX-command-master (or C-c C-c), you can use
 ;; LatexMk command to compile TeX source.
+;; You can customize options for LatexMk via auctex-latexmk-options.
 ;;
 ;; For Japanese users:
 ;;
@@ -74,6 +75,10 @@
   "Encoding mapping for platex."
   :group 'auctex-latexmk)
 
+(defcustom auctex-latexmk-options "-pdfdvi"
+  "Options for LatexMk."
+  :group 'auctex-latexmk)
+
 (defun TeX-run-latexmk (name command file)
   (let ((TeX-sentinel-default-function 'Latexmk-sentinel)
         (pair (assq buffer-file-coding-system auctex-latexmk-encoding-alist)))
@@ -85,9 +90,12 @@
 ;;;###autoload
 (defun auctex-latexmk-setup ()
   "Add LatexMk command to TeX-command-list."
+  (add-to-list 'TeX-expand-list
+               '("%(latexmkopt)" (lambda ()
+                                   (or auctex-latexmk-options ""))))
   (setq-default TeX-command-list
                 (cons
-                 '("LatexMk" "latexmk -pdfdvi %t" TeX-run-latexmk nil
+                 `("LatexMk" "latexmk %(latexmkopt) %t" TeX-run-latexmk nil
                    (plain-tex-mode latex-mode doctex-mode) :help "Run LatexMk")
                  TeX-command-list)
                 LaTeX-clean-intermediate-suffixes
