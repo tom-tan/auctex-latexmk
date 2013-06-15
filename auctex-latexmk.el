@@ -4,7 +4,7 @@
 
 ;; Author: Tomoya Tanjo <ttanjo@gmail.com>
 ;; URL: https://github.com/tom-tan/auctex-latexmk/
-;; Package-Requires: ((auctex "11.86"))
+;; Package-Requires: ((auctex "11.87"))
 ;; Keywords: tex
 
 ;; This program is free software; you can redistribute it and/or modify
