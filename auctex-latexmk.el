@@ -4,7 +4,6 @@
 
 ;; Author: Tomoya Tanjo <ttanjo@gmail.com>
 ;; URL: https://github.com/tom-tan/auctex-latexmk/
-;; Package-Requires: ((auctex "11.87"))
 ;; Keywords: tex
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -28,6 +27,9 @@
 ;;   * AUCTeX
 ;;   * LatexMk
 ;;   * TeXLive (2011 or later if you write TeX source in Japanese)
+;;
+;; NOTE: AUCTeX is not in Package-Requires header because AUCTeX in ELPA is outdated.
+;; Please install it by yourself.
 ;;
 ;; To use this package, add the following line to your .emacs file:
 ;;     (require 'auctex-latexmk)
