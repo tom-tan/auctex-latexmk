@@ -7,9 +7,6 @@ Requirements:
 * LatexMk
 * TeXLive (2011 or later if you write TeX source in Japanese)
 
-NOTE: AUCTeX is not in Package-Requires header because AUCTeX in ELPA is outdated.
-Please install it by yourself.
-
 To use this package, add the following line to your `.emacs` file:
 ```elisp
     (require 'auctex-latexmk)
