@@ -15,8 +15,7 @@ To use this package, add the following line to your `.emacs` file:
 And add the following line to your `.latexmkrc` file:
 ```perl
     # .latexmkrc starts
-    $latex  = "platex -interaction=nonstopmode";
-    $dvipdf = 'perl -e "exec(\'dvipdfmx\', \$ARGV[0])"';
+    $pdf_mode = 1;
     # .latexmkrc ends
 ```
 After that, by using `M-x TeX-command-master` (or C-c C-c), you can use
