@@ -99,7 +99,7 @@
     (goto-char (point-max))
     (cond
       ((re-search-backward (format "^%s finished at" name) nil t)
-       (re-search-backward "^Run number [0-9]+ of rule 'latex'" nil t)
+       (re-search-backward "^Run number [0-9]+ of rule '\\(pdf\\|lua\\|xe\\)?latex'" nil t)
        (forward-line 5)
        (let ((beg (point)))
          (re-search-forward "^Latexmk:" nil t)
@@ -113,7 +113,7 @@
        (re-search-forward "^  \\([^:]+\\):" nil t)
        (let ((com (TeX-match-buffer 1)))
          (cond
-           ((string= com "latex")
+           ((string-match "^\\(pdf\\|lua\\|xe\\)?latex" com)
             (goto-char (point-min))
             (TeX-LaTeX-sentinel process name)
             (when (string= TeX-command-next TeX-command-BibTeX)
