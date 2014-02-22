@@ -103,6 +103,9 @@
            (progn
              (forward-line 5)
              (let ((beg (point)))
+               (when (string= (current-word) "Latexmk")
+                 ;; Special treatment for MiKTeX
+                 (forward-line))
                (re-search-forward "^Latexmk:" nil t)
                (beginning-of-line)
                (save-restriction
