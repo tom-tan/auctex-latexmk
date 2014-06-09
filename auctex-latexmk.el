@@ -92,7 +92,7 @@
                  TeX-command-list)
                 LaTeX-clean-intermediate-suffixes
                 (append LaTeX-clean-intermediate-suffixes
-                        '("\\.fdb_latexmk" "\\.aux.bak"))))
+                        '("\\.fdb_latexmk" "\\.aux.bak" "\\.fls"))))
 
 (defun Latexmk-sentinel (process name)
   (save-excursion
