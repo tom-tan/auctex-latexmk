@@ -98,8 +98,8 @@
   (save-excursion
     (goto-char (point-max))
     (cond
-      ((re-search-backward (format "^%s finished at" name) nil t)
-       (if (re-search-backward "^Run number [0-9]+ of rule '\\(pdf\\|lua\\|xe\\)?latex'" nil t)
+      ((re-search-backward (format "^%s finished at" mode-name) nil t)
+       (if (re-search-backward "^Latexmk: Run number [0-9]+ of rule '\\(pdf\\|lua\\|xe\\)?latex'" nil t)
            (progn
              (forward-line 5)
              (let ((beg (point)))
@@ -113,7 +113,7 @@
                  (goto-char (point-min))
                  (TeX-LaTeX-sentinel process name))))
          (message (format "%s: nothing to do" name))))
-      ((re-search-backward (format "^%s exited abnormally with code" name) nil t)
+      ((re-search-backward (format "^%s exited abnormally with code" mode-name) nil t)
        (re-search-backward "^Collected error summary (may duplicate other messages):" nil t)
        (re-search-forward "^  \\([^:]+\\):" nil t)
        (let ((com (TeX-match-buffer 1)))
