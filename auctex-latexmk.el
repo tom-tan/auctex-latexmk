@@ -99,7 +99,7 @@
     (goto-char (point-max))
     (cond
       ((re-search-backward (format "^%s finished at" mode-name) nil t)
-       (if (re-search-backward "^Latexmk: Run number [0-9]+ of rule '\\(pdf\\|lua\\|xe\\)?latex'" nil t)
+       (if (re-search-backward "^Run number [0-9]+ of rule '\\(pdf\\|lua\\|xe\\)?latex'" nil t)
            (progn
              (forward-line 5)
              (let ((beg (point)))
