@@ -74,7 +74,7 @@
   (if announce
       (progn
         (message "LatexMkPvc: processing")  ; announce start of each cycle
-        (Latexmk-pvc-set-filter process original-filter nil)))
+        (Latexmk-pvc-wrap-filter process original-filter nil)))
 
   ;; check the buffer for Latexmk-pvc-waiting-string
   (with-current-buffer (process-buffer process)
@@ -96,7 +96,7 @@
             (Latexmk-pvc-fake-sentinel process "LatexMkPvc")
 
             ;; reset filter to announce at start of next cycle
-            (Latexmk-pvc-set-filter process original-filter t)))
+            (Latexmk-pvc-wrap-filter process original-filter t)))
       )))
 
 
