@@ -87,7 +87,7 @@
   "Add LatexMk command to TeX-command-list."
   (setq-default TeX-command-list
                 (cons
-                 '("LatexMk" "latexmk %t" TeX-run-latexmk nil
+                 '("LatexMk" "latexmk %S%(mode) %t" TeX-run-latexmk nil
                    (plain-tex-mode latex-mode doctex-mode) :help "Run LatexMk")
                  TeX-command-list)
                 LaTeX-clean-intermediate-suffixes
