@@ -74,6 +74,10 @@
   "Encoding mapping for platex."
   :group 'auctex-latexmk)
 
+(defcustom auctex-latexmk-inherit-TeX-PDF-mode nil
+  "If non-nil add -pdf flag to latexmk when TeX-PDF-mode is active."
+  :group 'auctex-latexmk)
+
 (defun TeX-run-latexmk (name command file)
   (let ((TeX-sentinel-default-function 'Latexmk-sentinel)
         (pair (assq buffer-file-coding-system auctex-latexmk-encoding-alist)))
@@ -85,9 +89,16 @@
 ;;;###autoload
 (defun auctex-latexmk-setup ()
   "Add LatexMk command to TeX-command-list."
+  (add-to-list 'TeX-expand-list
+               '("%(-PDF)"
+                 (lambda ()
+                   (if (and (not TeX-Omega-mode)
+                            TeX-PDF-mode
+                            auctex-latexmk-inherit-TeX-PDF-mode)
+                       "-pdf" ""))))
   (setq-default TeX-command-list
                 (cons
-                 '("LatexMk" "latexmk %S%(mode) %t" TeX-run-latexmk nil
+                 '("LatexMk" "latexmk %(-PDF)%S%(mode) %t" TeX-run-latexmk nil
                    (plain-tex-mode latex-mode doctex-mode) :help "Run LatexMk")
                  TeX-command-list)
                 LaTeX-clean-intermediate-suffixes
