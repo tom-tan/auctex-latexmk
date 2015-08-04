@@ -75,7 +75,7 @@
   :group 'auctex-latexmk)
 
 (defcustom auctex-latexmk-inherit-TeX-PDF-mode nil
-  "If non-nil add -pdf flag to latexmk when TeX-PDF-mode is active."
+  "If non-nil add -pdf flag to latexmk when `TeX-PDF-mode' is active."
   :group 'auctex-latexmk)
 
 (defun TeX-run-latexmk (name command file)
