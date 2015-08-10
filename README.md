@@ -14,14 +14,31 @@ To use this package, add the following line to your `.emacs` file:
     (require 'auctex-latexmk)
     (auctex-latexmk-setup)
 ```
-And add the following line to your `.latexmkrc` file:
-```perl
-    # .latexmkrc starts
-    $pdf_mode = 1;
-    # .latexmkrc ends
-```
 After that, by using `M-x TeX-command-master` (or C-c C-c), you can use
 LatexMk command to compile TeX source.
+    
+LatexMk will inherit many AUCTeX settings, including:
+* Run with `-interaction-nonestopmode` if `TeX-interactive-mode` minor mode is
+  active
+* Run with `-synctex` if `TeX-source-correlate-mode` is active
+  
+If you would like LatexMk to aso pass the `-pdf` flag when `TeX-PDF-mode` is
+active add
+```elisp
+    (setq auctex-latexmk-inherit-TeX-PDF-mode t)
+```
+to your `.emacs` file.
+
+Additional configuration of `latexmk` is possible by creating a `~/.latexmkrc` file. For
+example, to always compile to pdf add the following line to your `.latexmkrc`
+file:
+```perl
+# .latexmkrc starts
+$pdf_mode = 1;
+# .latexmkrc ends
+```
+Additional documention describing all the available options is available on
+[CTAN](http://ctan.org/pkg/latexmk).
 
 For Japanese users:
 
