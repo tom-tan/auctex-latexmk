@@ -95,7 +95,7 @@
                    (if (and (not TeX-Omega-mode)
                             TeX-PDF-mode
                             auctex-latexmk-inherit-TeX-PDF-mode)
-                       "-pdf" ""))))
+                       "-pdf " ""))))
   (setq-default TeX-command-list
                 (cons
                  '("LatexMk" "latexmk %(-PDF)%S%(mode) %t" TeX-run-latexmk nil
