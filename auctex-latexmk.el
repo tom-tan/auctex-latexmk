@@ -78,6 +78,11 @@
   "If non-nil add -pdf flag to latexmk when `TeX-PDF-mode' is active."
   :group 'auctex-latexmk)
 
+(defcustom auctex-latexmk-run-previewer-continuously nil
+  "Non-nil means add the -pvc flag to latexmk which continuosly updates the 
+   viewer when the source is changed."
+  :group 'auctex-latexmk)
+
 (defun TeX-run-latexmk (name command file)
   (let ((TeX-sentinel-default-function 'Latexmk-sentinel)
         (pair (assq buffer-file-coding-system auctex-latexmk-encoding-alist)))
@@ -96,9 +101,14 @@
                             TeX-PDF-mode
                             auctex-latexmk-inherit-TeX-PDF-mode)
                        "-pdf " ""))))
+  (add-to-list 'TeX-expand-list
+               '("%(-PVC)"
+                 (lambda ()
+                   (if auctex-latexmk-run-previewer-continuously
+                       "-pvc " ""))))
   (setq-default TeX-command-list
                 (cons
-                 '("LatexMk" "latexmk %(-PDF)%S%(mode) %t" TeX-run-latexmk nil
+                 '("LatexMk" "latexmk %(-PDF)%S%(mode) %(-PVC)%t" TeX-run-latexmk nil
                    (plain-tex-mode latex-mode doctex-mode) :help "Run LatexMk")
                  TeX-command-list)
                 LaTeX-clean-intermediate-suffixes

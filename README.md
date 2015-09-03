@@ -27,7 +27,12 @@ active add
 ```elisp
     (setq auctex-latexmk-inherit-TeX-PDF-mode t)
 ```
-to your `.emacs` file.
+to your `.emacs` file.  Setting
+```elisp
+    (setq auctex-latexmk-run-previewer-continuously t)
+```
+will run latexmk with the `-pvc` flag, which continuously updates the viewer
+as the source file is changed.
 
 Additional configuration of `latexmk` is possible by creating a `~/.latexmkrc` file. For
 example, to always compile to pdf add the following line to your `.latexmkrc`
