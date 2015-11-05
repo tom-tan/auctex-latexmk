@@ -7,7 +7,7 @@ Requirements:
 * LatexMk
 * TeXLive (2011 or later if you write TeX source in Japanese)
 
-You can install it by using `package-install` via [MELPA](http://melpa.milkbox.net/).
+You can install it by using `package-install` via [MELPA](https://melpa.org/).
 
 To use this package, add the following line to your `.emacs` file:
 ```elisp
