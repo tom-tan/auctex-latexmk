@@ -33,9 +33,9 @@ Additional configuration of `latexmk` is possible by creating a `~/.latexmkrc` f
 example, to always compile to pdf add the following line to your `.latexmkrc`
 file:
 ```perl
-# .latexmkrc starts
-$pdf_mode = 1;
-# .latexmkrc ends
+    # .latexmkrc starts
+    $pdf_mode = 1;
+    # .latexmkrc ends
 ```
 Additional documention describing all the available options is available on
 [CTAN](http://ctan.org/pkg/latexmk).
