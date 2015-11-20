@@ -16,13 +16,13 @@ To use this package, add the following line to your `.emacs` file:
 ```
 After that, by using `M-x TeX-command-master` (or C-c C-c), you can use
 LatexMk command to compile TeX source.
-    
+
 LatexMk will inherit many AUCTeX settings, including:
 * Run with `-interaction-nonestopmode` if `TeX-interactive-mode` minor mode is
   active
 * Run with `-synctex` if `TeX-source-correlate-mode` is active
-  
-If you would like LatexMk to aso pass the `-pdf` flag when `TeX-PDF-mode` is
+
+If you would like LatexMk to pass the `-pdf` flag when `TeX-PDF-mode` is
 active add
 ```elisp
     (setq auctex-latexmk-inherit-TeX-PDF-mode t)
