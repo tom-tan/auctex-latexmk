@@ -55,6 +55,7 @@
 ;;; Code:
 
 (require 'tex-buf)
+(require 'tex-jp)
 (require 'latex)
 
 (defgroup auctex-latexmk nil
@@ -62,27 +63,17 @@
   :group 'AUCTeX
   :prefix "auctex-latexmk")
 
-(defcustom auctex-latexmk-encoding-alist
-  '((japanese-iso-8bit      . "euc")
-    (japanese-iso-8bit-unix . "euc")
-    (euc-jp                 . "euc")
-    (euc-jp-unix            . "euc")
-    (utf-8                  . "utf8")
-    (utf-8-unix             . "utf8")
-    (japanese-shift-jis     . "sjis")
-    (japanese-shift-jis-dos . "sjis"))
-  "Encoding mapping for platex."
-  :group 'auctex-latexmk)
-
 (defcustom auctex-latexmk-inherit-TeX-PDF-mode nil
   "If non-nil add -pdf flag to latexmk when `TeX-PDF-mode' is active."
   :group 'auctex-latexmk)
 
 (defun TeX-run-latexmk (name command file)
   (let ((TeX-sentinel-default-function 'Latexmk-sentinel)
-        (pair (assq buffer-file-coding-system auctex-latexmk-encoding-alist)))
-    (unless (null pair)
-      (setenv "LATEXENC" (cdr pair)))
+        (enc (when (and (featurep 'mule)
+                        japanese-TeX-use-kanji-opt-flag)
+               (japanese-TeX-get-encoding-string))))
+    (when enc
+      (setenv "LATEXENC" enc))
     (TeX-run-TeX name command file)
     (setenv "LATEXENC" nil)))
 
