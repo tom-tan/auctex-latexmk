@@ -48,9 +48,9 @@ Here is the example of `.latexmkrc` to use `LATEXENC`:
 ```perl
     # .latexmkrc starts
     $kanji    = "-kanji=$ENV{\"LATEXENC\"}" if defined $ENV{"LATEXENC"};
-    $latex    = "platex -interaction=nonstopmode $kanji";
-    $bibtex   = 'pbibtex $kanji';
-    $dvipdf   = 'perl -e "exec(\'dvipdfmx\', \$ARGV[0])"';
+    $latex    = "platex $kanji";
+    $bibtex   = "pbibtex $kanji";
+    $dvipdf   = 'dvipdfmx -o %D %S';
     $pdf_mode = 3;
     # .latexmkrc ends
 ```
