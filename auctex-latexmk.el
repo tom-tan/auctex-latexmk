@@ -133,7 +133,7 @@
             (goto-char (point-min))
             (TeX-LaTeX-sentinel process name)
             (when (string= TeX-command-next TeX-command-BibTeX)
-              (setq TeX-command-default)))
+              (setq TeX-command-default nil)))
            ((string-match "^bibtex " com)
             (forward-line -1)
             (re-search-backward com nil t)
