@@ -92,10 +92,14 @@
   (add-to-list 'TeX-expand-list
                '("%(-PDF)"
                  (lambda ()
-                   (if (and (not TeX-Omega-mode)
+                   (cond
+                     (((and (not TeX-Omega-mode)
                             TeX-PDF-mode
                             auctex-latexmk-inherit-TeX-PDF-mode)
-                       "-pdf " ""))))
+                       "-pdf ")
+                      ((equal TeX-engine "xetex") "-xelatex ")
+                      ((equal TeX-engine "luatex") "-lualatex ")
+                      (t ""))))))
   (setq-default TeX-command-list
                 (cons
                  '("LatexMk" "latexmk %(-PDF)%S%(mode) %(file-line-error) %t" TeX-run-latexmk nil
