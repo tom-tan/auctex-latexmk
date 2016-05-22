@@ -93,13 +93,13 @@
                '("%(-PDF)"
                  (lambda ()
                    (cond
-                     (((and (not TeX-Omega-mode)
-                            TeX-PDF-mode
-                            auctex-latexmk-inherit-TeX-PDF-mode)
-                       "-pdf ")
-                      ((equal TeX-engine "xetex") "-xelatex ")
-                      ((equal TeX-engine "luatex") "-lualatex ")
-                      (t ""))))))
+                    ((and (not TeX-Omega-mode)
+                          TeX-PDF-mode
+                          auctex-latexmk-inherit-TeX-PDF-mode)
+                     "-pdf ")
+                    ((eq TeX-engine 'xetex) "-xelatex ")
+                    ((eq TeX-engine 'luatex) "-lualatex ")
+                    (t "")))))
   (setq-default TeX-command-list
                 (cons
                  '("LatexMk" "latexmk %(-PDF)%S%(mode) %(file-line-error) %t" TeX-run-latexmk nil
