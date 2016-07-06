@@ -102,7 +102,7 @@
                     (t "")))))
   (setq-default TeX-command-list
                 (cons
-                 '("LatexMk" "latexmk %(-PDF)%S%(mode) %(file-line-error) %t" TeX-run-latexmk nil
+                 '("LatexMk" "latexmk %(-PDF)%S%(mode) %(file-line-error) %(extraopts) %t" TeX-run-latexmk nil
                    (plain-tex-mode latex-mode doctex-mode) :help "Run LatexMk")
                  TeX-command-list)
                 LaTeX-clean-intermediate-suffixes
