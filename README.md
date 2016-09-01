@@ -1,5 +1,8 @@
 # auctex-latexmk.el
 
+[![MELPA Stable](https://stable.melpa.org/packages/auctex-latexmk-badge.svg)](https://stable.melpa.org/#/auctex-latexmk)
+[![MELPA](http://melpa.org/packages/auctex-latexmk-badge.svg)](http://melpa.org/#/auctex-latexmk)
+
 This library adds LatexMk support to AUCTeX.
 
 Requirements:
