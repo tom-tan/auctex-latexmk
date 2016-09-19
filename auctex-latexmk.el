@@ -93,7 +93,7 @@
                '("%(-PDF)"
                  (lambda ()
                    (cond
-                    ((and (not TeX-Omega-mode)
+                    ((and (eq TeX-engine 'default)
                           TeX-PDF-mode
                           auctex-latexmk-inherit-TeX-PDF-mode)
                      "-pdf ")
