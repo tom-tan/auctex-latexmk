@@ -43,7 +43,16 @@ file:
 Additional documention describing all the available options is available on
 [CTAN](http://ctan.org/pkg/latexmk).
 
-For Japanese users:
+### For MikTex users
+
+Due to the [bug in MikTex](https://sourceforge.net/p/miktex/bugs/2310/), you will see the following message if `TeX-file-line-error` is not `nil`.
+```
+Latexmk: Could not find file [%(file-line-error)].
+-- Use the -f option to force complete processing.
+```
+As a workaround, add `(setq TeX-file-line-error nil)` to your `.emacs` file.
+
+### For Japanese users
 
 LatexMk command automatically stores the encoding of a source file
 and passes it to latexmk via an environment variable named `LATEXENC`.
