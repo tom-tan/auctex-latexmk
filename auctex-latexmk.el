@@ -97,6 +97,10 @@
                           TeX-PDF-mode
                           auctex-latexmk-inherit-TeX-PDF-mode)
                      "-pdf ")
+                    ((and (eq TeX-engine 'xetex)
+                          TeX-PDF-mode
+                          auctex-latexmk-inherit-TeX-PDF-mode)
+                     "-pdf -pdflatex=xelatex ")
                     ((eq TeX-engine 'xetex) "-xelatex ")
                     ((eq TeX-engine 'luatex) "-lualatex ")
                     (t "")))))
